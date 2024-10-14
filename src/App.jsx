@@ -42,6 +42,7 @@ function App() {
     return (
         <Router>
             <Background>
+            <img src="/Heading.png" alt="Heading"/> 
               <img src="https://raw.githubusercontent.com/harshith1817/CinemaSeek/refs/heads/main/src/assets/Background.jpg" alt="background" className='bg'/>
                 <SearchBar type="text" placeholder='Search Here'/>
                 <SearchButton>Search</SearchButton>
