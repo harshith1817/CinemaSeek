@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; 
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import Home from './Pages/Home';
+import Home from './Pages/Home'; // Ensure this path is correct
 import Saved from './Pages/Saved';
 import { FaSearch } from "react-icons/fa";
 import Scaleloader from "./assets/Scaleloader";
@@ -11,22 +11,20 @@ import './App.css';
 const Background = styled.div`
   width: 100%;
   height: 100vh;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 `;
 
-// Navigation bar styling
+// Navbar styling
 const Navbar = styled.nav`
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 10;
 `;
@@ -47,22 +45,60 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-// Search bar styling
+// Container for the title and slogan
+const TitleContainer = styled.div`
+width: 100%;
+height: 20%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: white;
+position: absolute;
+top: 15%;
+text-align: center;
+`;
+
+const Title = styled.h1`
+  font-size: 4rem;
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+`;
+
+const Slogan = styled.p`
+font-size: 1.75rem;
+margin: 0;
+color: white;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+`;
+
+// Main container styling for the search area
+const MainContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 10%;
+position: absolute;
+top: 35%;
+transform: translateY(-50%);
+`;
+
 const SearchBar = styled.input`
-  width: 40%;
-  height: 2.5rem;
-  border-radius: 0.75rem;
-  text-align: center;
-  font-size: 1rem;
-  border: none;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  color: #333;
-  outline: none;
+width: 40%;
+height: 2.5rem;
+border-radius: 0.75rem;
+text-align: center;
+font-size: 1rem;
+border: none;
+margin-bottom: 1rem;
+box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+color: #333;
+outline: none;
 `;
 
 // Search button styling
-const SearchButton = styled.button`
+const SearchButton = styled.button`  
   width: 10%;
   height: 2.5rem;
   background-color: #1E90FF;
@@ -86,53 +122,42 @@ const SearchSymbol = styled.span`
 `;
 
 const SearchText = styled.span`
-  padding-right: 2rem;
-  font-size: 1.1rem;
-`;
-
-// Container for the title and slogan
-const TitleContainer = styled.div`
-  width: 100%;
-  height: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  position: absolute;
-  top: 15%;
-  text-align: center;
-`;
-
-const Title = styled.h1`
-  font-size: 4rem;
-  margin: 0;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-`;
-
-const Slogan = styled.p`
-  font-size: 1.75rem;
-  margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-`;
-
-// Main container styling for the search area
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10%;
-  position: absolute;
-  top: 35%;
-  transform: translateY(-50%);
+padding-right: 2rem;
+font-size: 1.1rem;
 `;
 
 function App() {
   const [searchTerm, setSearchTerm] = useState(''); // State for the search input
   const [load, setLoad] = useState(true);
+  const [movieData, setMovieData] = useState(null); // State to store movie data
 
+  const fetchMovie = async (term) => {
+    try {
+      const URL = `https://omdbapi.com/?t=${term}&apikey=5be72e59`;
+      const response = await fetch(URL);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const finaldata = await response.json();
+
+      if (finaldata.Response === "False") {
+        console.error(`Error: ${finaldata.Error}`);
+        setMovieData(null); // Reset movieData if no movie found
+      } else {
+        setMovieData(finaldata); // Set the fetched movie data
+      }
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch a default movie when the component mounts
+    fetchMovie('');
+  }, []);
+  
   useEffect(() => {
     if (load) {
       document.body.classList.add('loading');
@@ -152,7 +177,7 @@ function App() {
 
   const handleSearch = () => {
     if (searchTerm) {
-      console.log(`Searching for: ${searchTerm}`);
+      fetchMovie(searchTerm); // Call fetchMovie with the search term
     } else {
       alert("Please enter a search term.");
     }
@@ -173,15 +198,16 @@ function App() {
           <StyledNavLink to="/Saved">Favorites</StyledNavLink>
         </Navbar>
         <img 
-          src="https://images.pexels.com/photos/7234404/pexels-photo-7234404.jpeg?auto=compress&cs=tinysrgb&w=600" 
+          src="https://raw.githubusercontent.com/harshith1817/CinemaSeek/refs/heads/main/src/assets/Background.jpg" 
           alt="background" 
           className='bg' 
           style={{ 
-            position: 'absolute', 
+            position: 'fixed', 
             width: '100%', 
             height: '100%', 
             objectFit: 'cover', 
-            zIndex: -1 
+            zIndex: -1,
+            scale:1
           }}
         />
         <TitleContainer>
@@ -202,7 +228,7 @@ function App() {
           </SearchButton>
         </MainContainer>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home movieData={movieData} />} /> {/* Pass movieData to Home component */}
           <Route path='/Saved' element={<Saved />} />
         </Routes>
       </Background>
