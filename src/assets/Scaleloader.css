@@ -1,0 +1,17 @@
+#scaleloader {
+    position: fixed; /* Ensures the loader stays fixed to the viewport */
+    top: 50%; /* Moves to the vertical center */
+    left: 50%; /* Moves to the horizontal center */
+    transform: translate(-50%, -50%); /* Perfectly centers the element */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0b0522; /* Background color for the loader */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    z-index: 9999; /* Ensures it's above all other elements */
+}
+
+#scaleloader-none {
+    display: none; /* Hides the loader when it's not active */
+}
