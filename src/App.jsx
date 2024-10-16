@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import Home from './Pages/Home'; // Ensure this path is correct
+import Home from './Pages/Home';
 import Saved from './Pages/Saved';
-import { FaSearch } from "react-icons/fa";
 import Scaleloader from "./assets/Scaleloader";
+import MoveToTop from './assets/MoveToTop';
 import './App.css';
 
 // Background container styling
@@ -41,96 +41,43 @@ const StyledNavLink = styled(NavLink)`
 
   &.active {
     font-weight: bold;
-    color: #b968c7;
+    color: #00ffd4;
   }
 `;
 
-// Container for the title and slogan
 const TitleContainer = styled.div`
-width: 100%;
-height: 20%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-color: white;
-position: absolute;
-top: 15%;
-text-align: center;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: absolute;
+  top: 15%;
+  text-align: center;
 `;
 
 const Title = styled.h1`
   font-size: 4rem;
   margin: 0;
-  color: white;
+  color: #fdfaa1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 `;
 
 const Slogan = styled.p`
-font-size: 1.75rem;
-margin: 0;
-color: white;
-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-`;
-
-// Main container styling for the search area
-const MainContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 10%;
-position: absolute;
-top: 35%;
-transform: translateY(-50%);
-`;
-
-const SearchBar = styled.input`
-width: 40%;
-height: 2.5rem;
-border-radius: 0.75rem;
-text-align: center;
-font-size: 1rem;
-border: none;
-margin-bottom: 1rem;
-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-color: #333;
-outline: none;
-`;
-
-// Search button styling
-const SearchButton = styled.button`  
-  width: 10%;
-  height: 2.5rem;
-  background-color: #1E90FF;
-  font-size: 0.95rem;
+  font-size: 1.75rem;
+  margin: 0;
   color: white;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #104E8B;
-  }
-`;
-
-const SearchSymbol = styled.span`
-  padding-left: 2.1rem;
-`;
-
-const SearchText = styled.span`
-padding-right: 2rem;
-font-size: 1.1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 `;
 
 function App() {
   const [searchTerm, setSearchTerm] = useState(''); // State for the search input
-  const [load, setLoad] = useState(true);
   const [movieData, setMovieData] = useState(null); // State to store movie data
+  const [load, setLoad] = useState(true);
 
+  // Function to fetch movie data
   const fetchMovie = async (term) => {
     try {
       const URL = `https://omdbapi.com/?t=${term}&apikey=5be72e59`;
@@ -140,24 +87,19 @@ function App() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const finaldata = await response.json();
+      const finalData = await response.json();
 
-      if (finaldata.Response === "False") {
-        console.error(`Error: ${finaldata.Error}`);
-        setMovieData(null); // Reset movieData if no movie found
+      if (finalData.Response === "False") {
+        console.error(`Error: ${finalData.Error}`);
+        setMovieData(null); // Reset movieData if no movie is found
       } else {
-        setMovieData(finaldata); // Set the fetched movie data
+        setMovieData(finalData); // Set the fetched movie data
       }
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
     }
   };
 
-  useEffect(() => {
-    // Fetch a default movie when the component mounts
-    fetchMovie('');
-  }, []);
-  
   useEffect(() => {
     if (load) {
       document.body.classList.add('loading');
@@ -193,6 +135,7 @@ function App() {
     <Router>
       <Background>
         <Scaleloader load={load} />
+        <MoveToTop />
         <Navbar>
           <StyledNavLink to="/">Home</StyledNavLink>
           <StyledNavLink to="/Saved">Favorites</StyledNavLink>
@@ -207,26 +150,13 @@ function App() {
             height: '100%', 
             objectFit: 'cover', 
             zIndex: -1,
-            scale:1
+            scale: 1
           }}
         />
         <TitleContainer>
           <Title>CinemaSeek</Title>
           <Slogan>Movie Info Hub</Slogan>
         </TitleContainer>
-        <MainContainer>
-          <SearchBar 
-            type="text" 
-            placeholder='Looking for a film?' 
-            value={searchTerm} 
-            onChange={(e) => setSearchTerm(e.target.value)} 
-            onKeyPress={handleKeyPress} 
-          />
-          <SearchButton onClick={handleSearch}>
-            <SearchSymbol><FaSearch /></SearchSymbol>
-            <SearchText>Search</SearchText>
-          </SearchButton>
-        </MainContainer>
         <Routes>
           <Route path='/' element={<Home movieData={movieData} />} /> {/* Pass movieData to Home component */}
           <Route path='/Saved' element={<Saved />} />

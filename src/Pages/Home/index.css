@@ -3,16 +3,37 @@ body,html{
     padding: 0;
 }
 
-.moviedetails{
-    padding-top: 58rem;
+.moviedetails {
+    margin-top: 85%;
+    margin-bottom: 3%;
+    height: 57%;
+    width: 48%;
+    background-color: #2A383C; /* Darker shade to blend with background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 2rem;
+    border: 2px solid #4F5B5C; /* Slightly lighter border for contrast */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Darker shadow for depth */
+    color: #E0E0E0; /* Light gray text for good readability */
 }
 
+/* Optional: Additional styles for hover effects */
+.moviedetails:hover {
+    background-color: #313E3B; /* Match hover color to the original background */
+    border-color: #B0B0B0 /* Bright border on hover */
+}
+
+
 .moviedetails img{
-    height: 25rem;
+    height: 45%;
 }
 
 .moviedetails h1{
-    font-size: 4rem;
+    font-size: 5rem;
+    padding-bottom: 0.5rem;
 }
 
 .moviedetails p{
