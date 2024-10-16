@@ -17,7 +17,7 @@ const Background = styled.div`
   align-items: center;
 `;
 
-// Navbar styling
+// Navbar styling with responsiveness
 const Navbar = styled.nav`
   width: 100%;
   display: flex;
@@ -27,9 +27,14 @@ const Navbar = styled.nav`
   position: fixed;
   top: 0;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-// Styled navigation link
+// Styled navigation link with responsiveness
 const StyledNavLink = styled(NavLink)`
   color: white;
   text-decoration: none;
@@ -43,8 +48,15 @@ const StyledNavLink = styled(NavLink)`
     font-weight: bold;
     color: #00ffd4;
   }
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
 `;
 
+// Title container with responsiveness
 const TitleContainer = styled.div`
   width: 100%;
   height: 20%;
@@ -56,20 +68,34 @@ const TitleContainer = styled.div`
   position: absolute;
   top: 15%;
   text-align: center;
+
+  @media (max-width: 768px) {
+    top: 10%;
+  }
 `;
 
+// Title with responsiveness
 const Title = styled.h1`
   font-size: 4rem;
   margin: 0;
   color: #fdfaa1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
+// Slogan with responsiveness
 const Slogan = styled.p`
   font-size: 1.75rem;
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 function App() {
@@ -131,16 +157,16 @@ function App() {
     }
   };
 
-    const toggleFavorite = (movieTitle) => {
-      setFavorites((prevFavorites) => {
-        if (prevFavorites.includes(movieTitle)) {
-          // Remove from favorites
-          return prevFavorites.filter((title) => title !== movieTitle);
-        } else {
-          // Add to favorites
-          return [...prevFavorites, movieTitle];
-        }
-      });
+  const toggleFavorite = (movieTitle) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.includes(movieTitle)) {
+        // Remove from favorites
+        return prevFavorites.filter((title) => title !== movieTitle);
+      } else {
+        // Add to favorites
+        return [...prevFavorites, movieTitle];
+      }
+    });
   };
 
   return (
@@ -170,15 +196,15 @@ function App() {
           <Slogan>Movie Info Hub</Slogan>
         </TitleContainer>
         <Routes>
-        <Route 
-          path='/' 
-          element={<Home movieData={movieData} toggleFavorite={toggleFavorite} favorites={favorites} />} 
-        />
-        <Route 
-          path='/Saved' 
-          element={<Saved favorites={favorites} />} 
-        />
-      </Routes>
+          <Route 
+            path='/' 
+            element={<Home movieData={movieData} toggleFavorite={toggleFavorite} favorites={favorites} />} 
+          />
+          <Route 
+            path='/Saved' 
+            element={<Saved favorites={favorites} />} 
+          />
+        </Routes>
       </Background>
     </Router>
   );

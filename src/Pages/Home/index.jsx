@@ -11,7 +11,8 @@ const HomeContainer = styled.div`
     align-items: center;
     justify-content: center;
 `;
-// Main container styling for the search area
+
+// Main container styling for the search area with responsiveness
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,6 +21,15 @@ const MainContainer = styled.div`
   position: absolute;
   top: 35%;
   transform: translateY(-50%);
+
+  @media (max-width: 768px) {
+    top: 30%;
+  }
+
+  @media (max-width: 480px) {
+    top: 25%;
+    margin-top: 15%;
+  }
 `;
 
 const SearchBar = styled.input`
@@ -33,6 +43,16 @@ const SearchBar = styled.input`
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   color: #333;
   outline: none;
+
+  @media (max-width: 768px) {
+    width: 70%;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 80%;
+    font-size: 0.8rem;
+  }
 `;
 
 const SearchButton = styled.button`  
@@ -52,15 +72,33 @@ const SearchButton = styled.button`
   &:hover {
     background-color: #104E8B;
   }
+
+  @media (max-width: 768px) {
+    width: 25%;
+  }
+
+  @media (max-width: 480px) {
+    width: 35%;
+    font-size: 0.85rem;
+  }
 `;
 
 const SearchSymbol = styled.span`
   padding-left: 2.1rem;
+
+  @media (max-width: 480px) {
+    padding-left: 0.5rem;
+  }
 `;
 
 const SearchText = styled.span`
   padding-right: 2rem;
   font-size: 1.1rem;
+
+  @media (max-width: 480px) {
+    padding-right: 0.5rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const Favorites = styled.button`
@@ -80,6 +118,12 @@ const Favorites = styled.button`
   &:hover {
     background-color: ${({ isFavorited }) => (isFavorited ? '#0033CC' : '#FFC107')};
   }
+
+  @media (max-width: 480px) {
+    width: 90%;
+    height: 3rem;
+    font-size: 0.95rem;
+  }
 `;
 
 const ErrorMsg = styled.h1`
@@ -87,32 +131,53 @@ const ErrorMsg = styled.h1`
   display: flex;
   justify-content: center;
   font-size: 3rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const ErrorMsgBox = styled.div`
-     margin-top: 25%; 
-    width: 35%;
-    background-color: #2A383C;
-    border-radius: 2rem;
-    border: 2px solid #4F5B5C;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  margin-top: 25%; 
+  width: 35%;
+  background-color: #2A383C;
+  border-radius: 2rem;
+  border: 2px solid #4F5B5C;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 480px) {
+    width: 80%;
+    margin-top: 30%;
+  }
 `;
 
 const MovieDetailsContainer = styled.div`
-    margin-top: 85%;
-    margin-bottom: 3%;
-    height: 57%;
-    width: 48%;
-    background-color: #2A383C;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 2rem;
-    border: 2px solid #4F5B5C;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    color: #E0E0E0;
+  margin-top: 85%;
+  margin-bottom: 3%;
+  height: 57%;
+  width: 48%;
+  background-color: #2A383C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 2rem;
+  border: 2px solid #4F5B5C;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  color: #E0E0E0;
+
+  @media (max-width: 768px) {
+    width: 70%;
+    height: auto;
+    margin-top: 60%;
+  }
+
+  @media (max-width: 480px) {
+    width: 90%;
+    margin-top: 50%;
+    padding: 1rem;
+  }
 `;
 
 const LoadingOverlay = styled.div`
