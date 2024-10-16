@@ -73,11 +73,11 @@ const Slogan = styled.p`
 `;
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState(''); // State for the search input
-  const [movieData, setMovieData] = useState(null); // State to store movie data
+  const [searchTerm, setSearchTerm] = useState('');
+  const [movieData, setMovieData] = useState(null);
   const [load, setLoad] = useState(true);
+  const [favorites, setFavorites] = useState([]); // State for favorites
 
-  // Function to fetch movie data
   const fetchMovie = async (term) => {
     try {
       const URL = `https://omdbapi.com/?t=${term}&apikey=5be72e59`;
@@ -91,9 +91,9 @@ function App() {
 
       if (finalData.Response === "False") {
         console.error(`Error: ${finalData.Error}`);
-        setMovieData(null); // Reset movieData if no movie is found
+        setMovieData(null);
       } else {
-        setMovieData(finalData); // Set the fetched movie data
+        setMovieData(finalData);
       }
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
@@ -119,7 +119,7 @@ function App() {
 
   const handleSearch = () => {
     if (searchTerm) {
-      fetchMovie(searchTerm); // Call fetchMovie with the search term
+      fetchMovie(searchTerm);
     } else {
       alert("Please enter a search term.");
     }
@@ -129,6 +129,18 @@ function App() {
     if (event.key === 'Enter') {
       handleSearch();
     }
+  };
+
+    const toggleFavorite = (movieTitle) => {
+      setFavorites((prevFavorites) => {
+        if (prevFavorites.includes(movieTitle)) {
+          // Remove from favorites
+          return prevFavorites.filter((title) => title !== movieTitle);
+        } else {
+          // Add to favorites
+          return [...prevFavorites, movieTitle];
+        }
+      });
   };
 
   return (
@@ -158,9 +170,15 @@ function App() {
           <Slogan>Movie Info Hub</Slogan>
         </TitleContainer>
         <Routes>
-          <Route path='/' element={<Home movieData={movieData} />} /> {/* Pass movieData to Home component */}
-          <Route path='/Saved' element={<Saved />} />
-        </Routes>
+        <Route 
+          path='/' 
+          element={<Home movieData={movieData} toggleFavorite={toggleFavorite} favorites={favorites} />} 
+        />
+        <Route 
+          path='/Saved' 
+          element={<Saved favorites={favorites} />} 
+        />
+      </Routes>
       </Background>
     </Router>
   );

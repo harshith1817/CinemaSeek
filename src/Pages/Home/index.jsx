@@ -5,8 +5,7 @@ import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { FadeLoader } from 'react-spinners';
 import './index.css';
 
-
-const HomeContainer=styled.div`
+const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,45 +74,45 @@ const Favorites = styled.button`
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 0;
-  color: black; /* Black text for better readability */
+  color: black;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${({ isFavorited }) => (isFavorited ? '#0033CC' : '#FFC107')}; /* Darker blue when favorited, slightly darker gold when not */
+    background-color: ${({ isFavorited }) => (isFavorited ? '#0033CC' : '#FFC107')};
   }
 `;
 
-const ErrorMsg=styled.h1`
-  color:red;
+const ErrorMsg = styled.h1`
+  color: red;
   display: flex;
   justify-content: center;
-  font-size:3rem;
+  font-size: 3rem;
 `;
 
-const ErrorMsgBox=styled.div`
-     margin-top:25%; 
+const ErrorMsgBox = styled.div`
+     margin-top: 25%; 
     width: 35%;
-    background-color: #2A383C; /* Darker shade to blend with background */
+    background-color: #2A383C;
     border-radius: 2rem;
-    border: 2px solid #4F5B5C; /* Slightly lighter border for contrast */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Darker shadow for depth */
+    border: 2px solid #4F5B5C;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 `;
 
-const MovieDetailsContainer=styled.div`
-margin-top: 85%;
+const MovieDetailsContainer = styled.div`
+    margin-top: 85%;
     margin-bottom: 3%;
     height: 57%;
     width: 48%;
-    background-color: #2A383C; /* Darker shade to blend with background */
+    background-color: #2A383C;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     border-radius: 2rem;
-    border: 2px solid #4F5B5C; /* Slightly lighter border for contrast */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Darker shadow for depth */
-    color: #E0E0E0; /* Light gray text for good readability */
+    border: 2px solid #4F5B5C;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    color: #E0E0E0;
 `;
 
 const LoadingOverlay = styled.div`
@@ -126,16 +125,14 @@ const LoadingOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /* Make sure it appears on top of everything */
+  z-index: 1000;
 `;
 
-
-const Home = () => {
+const Home = ({ toggleFavorite, favorites }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [movieData, setMovieData] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isFavorited, setIsFavorited] = useState(false); // State for favorites
 
   const fetchMovie = async (term) => {
     setLoading(true);
@@ -172,11 +169,6 @@ const Home = () => {
     if (event.key === 'Enter') {
       handleSearch();
     }
-  };
-
-  // Function to toggle the favorite state
-  const toggleFavorite = () => {
-    setIsFavorited((prev) => !prev); // Toggle the favorite state
   };
 
   return (
@@ -228,10 +220,14 @@ const Home = () => {
           <p><strong>Writer:</strong> {movieData.Writer}</p>
           <p><strong>Awards:</strong> {movieData.Awards}</p>
           <p><strong>Plot:</strong> {movieData.Plot}</p>
-          <Favorites onClick={toggleFavorite} isFavorited={isFavorited}>
-              {isFavorited ? <MdFavorite /> : <MdFavoriteBorder />} {isFavorited ? "Added to Favorites" : "Add to Favorites"}
-          </Favorites>
 
+          <Favorites 
+            onClick={() => toggleFavorite(movieData.Title)} 
+            isFavorited={favorites.includes(movieData.Title)}
+          >
+            {favorites.includes(movieData.Title) ? <MdFavorite /> : <MdFavoriteBorder />}
+            {favorites.includes(movieData.Title) ? "Added to Favorites" : "Add to Favorites"}
+          </Favorites>
         </MovieDetailsContainer>
       )}
     </HomeContainer>
