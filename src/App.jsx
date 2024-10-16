@@ -109,7 +109,7 @@ function App() {
 
     const timer = setTimeout(() => {
       setLoad(false);
-    }, 1500);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);

@@ -13,14 +13,15 @@ body.loading {
 }
 
 ::-webkit-scrollbar-track {
-  background: #3f265d;
+  background: #245e61; /* Dark teal background color */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b3fff2;
+  background: #b3fff2; /* Base color */
   border-radius: 0.25rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #ce78dd;
+  background-color: #89e6d8; /* Darker version on hover */
 }
+
