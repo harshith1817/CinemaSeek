@@ -15,10 +15,12 @@ const Heading = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 3rem;
+    padding-top: 16%;
   }
 
   @media (max-width: 480px) {
     font-size: 2.5rem;
+    padding-top: 16%;
   }
 `;
 

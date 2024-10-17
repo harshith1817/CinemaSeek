@@ -147,7 +147,7 @@ const ErrorMsgBox = styled.div`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 
   @media (max-width: 480px) {
-    width: 90%;
+    width: 85%;
     margin-top: 30%;
   }
 `;
@@ -170,52 +170,52 @@ const MovieDetailsContainer = styled.div`
   @media (max-width: 1300px) {
     width: 83%;
     height: auto;
-    margin-top: 125%;
+    margin-top: 130%;
   }
   @media (max-width: 1160px) {
     width: 83%;
     height: auto;
-    margin-top: 165%;
+    margin-top: 170%;
   }
   @media (max-width: 950px) {
     width: 83%;
     height: auto;
-    margin-top: 185%;
+    margin-top: 190%;
   }
   @media (max-width: 768px) {
     width: 83%;
     height: auto;
-    margin-top: 225%;
+    margin-top: 230%;
   }
   @media (max-width: 630px) {
     width: 83%;
     height: auto;
-    margin-top: 255%;
+    margin-top: 260%;
   }
   @media (max-width: 550px) {
     width: 83%;
     height: auto;
-    margin-top: 285%;
+    margin-top: 290%;
   } 
   @media (max-width: 490px) {
     width: 83%;
-    margin-top: 315%;
+    margin-top: 320%;
     padding: 1rem;
   }
   
   @media (max-width: 410px) {
     width: 83%;
-    margin-top: 355%;
+    margin-top: 360%;
     padding: 1rem;
   }
   @media (max-width: 350px) {
     width: 83%;
-    margin-top: 425%;
+    margin-top: 430%;
     padding: 1rem;
   }
   @media (max-width: 300px) {
     width: 83%;
-    margin-top: 475%;
+    margin-top: 480%;
     padding: 1rem;
   }
 `;
