@@ -31,6 +31,7 @@ const Navbar = styled.nav`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+    padding-left:90%;
   }
 `;
 
@@ -70,7 +71,7 @@ const TitleContainer = styled.div`
   text-align: center;
 
   @media (max-width: 768px) {
-    top: 10%;
+    top: 15%;
   }
 `;
 
@@ -188,7 +189,7 @@ function App() {
             height: '100%', 
             objectFit: 'cover', 
             zIndex: -1,
-            scale: 1
+            scale: 1.4
           }}
         />
         <TitleContainer>

@@ -28,7 +28,7 @@ const MainContainer = styled.div`
 
   @media (max-width: 480px) {
     top: 25%;
-    margin-top: 15%;
+    margin-top: 20%;
   }
 `;
 
@@ -47,10 +47,11 @@ const SearchBar = styled.input`
   @media (max-width: 768px) {
     width: 70%;
     font-size: 0.9rem;
+    margin-top: 30%;
   }
 
   @media (max-width: 480px) {
-    width: 80%;
+    width: 60%;
     font-size: 0.8rem;
   }
 `;
@@ -74,29 +75,29 @@ const SearchButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    width: 25%;
+    width: 20%;
   }
 
   @media (max-width: 480px) {
-    width: 35%;
+    width: 20%;
     font-size: 0.85rem;
   }
 `;
 
 const SearchSymbol = styled.span`
-  padding-left: 2.1rem;
+  padding-left: 2.3rem;
 
   @media (max-width: 480px) {
-    padding-left: 0.5rem;
+    padding-left: 1rem;
   }
 `;
 
 const SearchText = styled.span`
-  padding-right: 2rem;
+  padding-right: 2.3rem;
   font-size: 1.1rem;
 
   @media (max-width: 480px) {
-    padding-right: 0.5rem;
+    padding-right: 1rem;
     font-size: 0.9rem;
   }
 `;
@@ -166,16 +167,55 @@ const MovieDetailsContainer = styled.div`
   border: 2px solid #4F5B5C;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
   color: #E0E0E0;
-
+  @media (max-width: 1300px) {
+    width: 70%;
+    height: auto;
+    margin-top: 100%;
+  }
+  @media (max-width: 1160px) {
+    width: 70%;
+    height: auto;
+    margin-top: 140%;
+  }
+  @media (max-width: 950px) {
+    width: 70%;
+    height: auto;
+    margin-top: 160%;
+  }
   @media (max-width: 768px) {
     width: 70%;
     height: auto;
-    margin-top: 60%;
+    margin-top: 200%;
   }
-
-  @media (max-width: 480px) {
-    width: 90%;
-    margin-top: 50%;
+  @media (max-width: 630px) {
+    width: 70%;
+    height: auto;
+    margin-top: 230%;
+  }
+  @media (max-width: 550px) {
+    width: 70%;
+    height: auto;
+    margin-top: 260%;
+  } 
+  @media (max-width: 490px) {
+    width: 70%;
+    margin-top: 290%;
+    padding: 1rem;
+  }
+  
+  @media (max-width: 410px) {
+    width: 70%;
+    margin-top: 330%;
+    padding: 1rem;
+  }
+  @media (max-width: 350px) {
+    width: 70%;
+    margin-top: 400%;
+    padding: 1rem;
+  }
+  @media (max-width: 300px) {
+    width: 70%;
+    margin-top: 450%;
     padding: 1rem;
   }
 `;

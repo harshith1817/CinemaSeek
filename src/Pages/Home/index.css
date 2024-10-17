@@ -14,6 +14,13 @@ body,html{
     height: 45%;
 }
 
+@media (max-width: 300px) {
+    .moviedetails img {
+        height: 30%;
+        width: 3rem;
+    }
+}
+
 .moviedetails h1{
     font-size: 5rem;
     padding-bottom: 0.5rem;
