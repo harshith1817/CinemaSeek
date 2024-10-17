@@ -186,7 +186,7 @@ function App() {
           style={{ 
             position: 'fixed', 
             width: '100%', 
-            height: '120%', 
+            height: '140%', 
             objectFit: 'cover', 
             zIndex: -1,
             scale: 1.4

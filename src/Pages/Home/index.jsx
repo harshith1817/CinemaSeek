@@ -170,52 +170,52 @@ const MovieDetailsContainer = styled.div`
   @media (max-width: 1300px) {
     width: 83%;
     height: auto;
-    margin-top: 130%;
+    margin-top: 135%;
   }
   @media (max-width: 1160px) {
     width: 83%;
     height: auto;
-    margin-top: 170%;
+    margin-top: 175%;
   }
   @media (max-width: 950px) {
     width: 83%;
     height: auto;
-    margin-top: 190%;
+    margin-top: 195%;
   }
   @media (max-width: 768px) {
     width: 83%;
     height: auto;
-    margin-top: 230%;
+    margin-top: 235%;
   }
   @media (max-width: 630px) {
     width: 83%;
     height: auto;
-    margin-top: 260%;
+    margin-top: 265%;
   }
   @media (max-width: 550px) {
     width: 83%;
     height: auto;
-    margin-top: 290%;
+    margin-top: 295%;
   } 
   @media (max-width: 490px) {
     width: 83%;
-    margin-top: 320%;
+    margin-top: 325%;
     padding: 1rem;
   }
   
   @media (max-width: 410px) {
     width: 83%;
-    margin-top: 360%;
+    margin-top: 365%;
     padding: 1rem;
   }
   @media (max-width: 350px) {
     width: 83%;
-    margin-top: 430%;
+    margin-top: 435%;
     padding: 1rem;
   }
   @media (max-width: 300px) {
     width: 83%;
-    margin-top: 480%;
+    margin-top: 485%;
     padding: 1rem;
   }
 `;
