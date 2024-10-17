@@ -134,7 +134,7 @@ const ErrorMsg = styled.h1`
   font-size: 3rem;
 
   @media (max-width: 480px) {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 `;
 
@@ -147,7 +147,7 @@ const ErrorMsgBox = styled.div`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
 
   @media (max-width: 480px) {
-    width: 80%;
+    width: 90%;
     margin-top: 30%;
   }
 `;
@@ -168,54 +168,54 @@ const MovieDetailsContainer = styled.div`
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
   color: #E0E0E0;
   @media (max-width: 1300px) {
-    width: 70%;
+    width: 83%;
     height: auto;
-    margin-top: 100%;
+    margin-top: 125%;
   }
   @media (max-width: 1160px) {
-    width: 70%;
+    width: 83%;
     height: auto;
-    margin-top: 140%;
+    margin-top: 165%;
   }
   @media (max-width: 950px) {
-    width: 70%;
+    width: 83%;
     height: auto;
-    margin-top: 160%;
+    margin-top: 185%;
   }
   @media (max-width: 768px) {
-    width: 70%;
+    width: 83%;
     height: auto;
-    margin-top: 200%;
+    margin-top: 225%;
   }
   @media (max-width: 630px) {
-    width: 70%;
+    width: 83%;
     height: auto;
-    margin-top: 230%;
+    margin-top: 255%;
   }
   @media (max-width: 550px) {
-    width: 70%;
+    width: 83%;
     height: auto;
-    margin-top: 260%;
+    margin-top: 285%;
   } 
   @media (max-width: 490px) {
-    width: 70%;
-    margin-top: 290%;
+    width: 83%;
+    margin-top: 315%;
     padding: 1rem;
   }
   
   @media (max-width: 410px) {
-    width: 70%;
-    margin-top: 330%;
+    width: 83%;
+    margin-top: 355%;
     padding: 1rem;
   }
   @media (max-width: 350px) {
-    width: 70%;
-    margin-top: 400%;
+    width: 83%;
+    margin-top: 425%;
     padding: 1rem;
   }
   @media (max-width: 300px) {
-    width: 70%;
-    margin-top: 450%;
+    width: 83%;
+    margin-top: 475%;
     padding: 1rem;
   }
 `;
